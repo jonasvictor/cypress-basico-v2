@@ -21,10 +21,11 @@ describe("Central de Atendimento ao Cliente TAT", function () {
     cy.get(".success").should("be.visible");
   });
 
-  it("exibe mensagem de erro quando submeter o formulário com um email inválido", function () {
+  it("exibe mensagem de erro quando submeter o formulário com um email com formatação inválida", function () {
     cy.get("#firstName").type("Jonas");
     cy.get("#lastName").type("Victor");
-    cy.get("#email").type("jonas.victor@tat,,com");
+    cy.get("#email").type("jonas.victor@tat,com");
+    cy.get("#open-text-area").type("Teste");
     cy.contains("button", "Enviar").click();
 
     cy.get(".error").should("be.visible");
